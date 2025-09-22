@@ -1,0 +1,59 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = "Verse Studio — Human vision × AI computation",
+  description = "Verse Studio is a new creative media production studio, AI-first and artist-led. Optics, vision, artistry, and computation—projects launching soon.",
+} = Astro.props;
+
+import "../styles/global.css";
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://verse-studio.com" />
+    <meta name="theme-color" content="#0b0f14" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/">
+        <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="11" fill="url(#g)" />
+          <defs>
+            <radialGradient id="g">
+              <stop offset="0" stop-color="#7fb3ff" />
+              <stop offset="0.6" stop-color="#1f4aff" />
+              <stop offset="1" stop-color="#0b0f14" />
+            </radialGradient>
+          </defs>
+        </svg>
+        <span>Verse Studio</span>
+      </a>
+      <nav class="top-nav">
+        <a href="https://morning-news-update.podbean.com/" rel="noopener noreferrer" target="_blank">Podcast</a>
+        <a href="mailto:info@verse-studio.com">Contact</a>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <p>© {new Date().getFullYear()} Verse Studio</p>
+      <p><a href="mailto:info@verse-studio.com">info@verse-studio.com</a></p>
+    </footer>
+  </body>
+</html>

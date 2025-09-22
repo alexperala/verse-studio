@@ -1,42 +1,34 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import AnimatedIris from "../components/AnimatedIris.astro";
+import ThreeIris from "../components/ThreeIris.jsx";
 ---
 <BaseLayout title="Verse Studio — New creative media studio (AI-first)">
   <section class="hero">
     <div>
       <p class="kicker">New creative media studio</p>
-      <h1 class="hero-title">
-        Human vision × <span style="color: var(--blue-2)">AI computation</span>
-      </h1>
+      <h1 class="hero-title">Human vision × <span style="color:var(--blue-2)">AI computation</span></h1>
       <p class="hero-sub">
         Verse Studio blends artistry, optics, and generative tools to craft filmic visuals,
         immersive sound, and intelligent media systems. We are <strong>AI-first</strong>, human-led,
         and relentlessly design-driven.
       </p>
       <div class="ctas">
-        <a
-          class="btn btn-primary"
-          href="https://morning-news-update.podbean.com/"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M8 5v14l11-7z" />
-          </svg>
+        <a class="btn btn-primary" href="https://morning-news-update.podbean.com/" rel="noopener noreferrer" target="_blank">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
           Listen: Morning News Update
         </a>
         <a class="btn" href="mailto:info@verse-studio.com">
-          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-          </svg>
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
           Work with Verse Studio
         </a>
       </div>
     </div>
-    <AnimatedIris />
+
+    <!-- Mount the 3D hero (React) -->
+    <ThreeIris client:load />
   </section>
 
+  <!-- Keep the rest of the sections as they are -->
   <section class="section" aria-labelledby="projects">
     <h2 id="projects">Featured project</h2>
     <div class="card">

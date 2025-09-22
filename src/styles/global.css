@@ -272,3 +272,14 @@ h1.hero-title {
   color: #d9e6ff;
   background: linear-gradient(90deg, rgba(47, 106, 246, 0.25), rgba(255, 138, 51, 0.18));
 }
+/* 3D hero container */
+.three-iris-wrap{
+  width: 100%;
+  max-width: 520px;
+  margin-inline: auto;
+  aspect-ratio: 1 / 1;
+  filter: drop-shadow(0 20px 50px rgba(0,0,0,.5));
+}
+@media (max-width: 900px){
+  .three-iris-wrap{ max-width: 420px; }
+}

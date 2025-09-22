@@ -1,0 +1,26 @@
+<div class="iris-wrap" id="iris">
+  <div class="eye">
+    <div class="iris"></div>
+    <div class="pupil"></div>
+    <div class="lens" aria-hidden="true"></div>
+  </div>
+</div>
+
+<script>
+  const root = document.getElementById('iris');
+  if (root && matchMedia('(pointer:fine)').matches) {
+    const iris = root.querySelector('.iris');
+    const rect = () => root.getBoundingClientRect();
+    window.addEventListener(
+      'mousemove',
+      (e) => {
+        const r = rect();
+        const cx = r.left + r.width / 2;
+        const cy = r.top + r.height / 2;
+        const angle = Math.atan2(e.clientY - cy, e.clientX - cx) * (180 / Math.PI);
+        iris?.style.setProperty('--look', `${angle}deg`);
+      },
+      { passive: true }
+    );
+  }
+</script>

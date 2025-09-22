@@ -1,11 +1,84 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AnimatedIris from "../components/AnimatedIris.astro";
 ---
+<BaseLayout title="Verse Studio — New creative media studio (AI-first)">
+  <section class="hero">
+    <div>
+      <p class="kicker">New creative media studio</p>
+      <h1 class="hero-title">
+        Human vision × <span style="color: var(--blue-2)">AI computation</span>
+      </h1>
+      <p class="hero-sub">
+        Verse Studio blends artistry, optics, and generative tools to craft filmic visuals,
+        immersive sound, and intelligent media systems. We are <strong>AI-first</strong>, human-led,
+        and relentlessly design-driven.
+      </p>
+      <div class="ctas">
+        <a
+          class="btn btn-primary"
+          href="https://morning-news-update.podbean.com/"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+          Listen: Morning News Update
+        </a>
+        <a class="btn" href="mailto:info@verse-studio.com">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+          </svg>
+          Work with Verse Studio
+        </a>
+      </div>
+    </div>
+    <AnimatedIris />
+  </section>
 
-<Layout>
-	<Welcome />
-</Layout>
+  <section class="section" aria-labelledby="projects">
+    <h2 id="projects">Featured project</h2>
+    <div class="card">
+      <span class="badge">AI-powered Podcast</span>
+      <h3 style="margin: 10px 0 6px">Morning News Update</h3>
+      <p style="color: #c7cfdb; max-width: 60ch">
+        Our first live release: a fast, daily news podcast powered by advanced speech synthesis
+        and automated editorial pipelines. Built to sound human—because the vision behind it is.
+      </p>
+      <p style="margin-top: 12px">
+        <a
+          class="btn btn-primary"
+          href="https://morning-news-update.podbean.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Visit Podcast</a
+        >
+      </p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="coming">
+    <h2 id="coming">More projects launching soon</h2>
+    <div class="grid">
+      <div class="card">
+        <strong>Optical Studies</strong>
+        <p style="color: #c7cfdb">
+          Short films exploring lenses, motion, and AI-driven cinematography.
+        </p>
+      </div>
+      <div class="card">
+        <strong>Generative Design</strong>
+        <p style="color: #c7cfdb">
+          Visual systems that merge computation with hand-crafted aesthetics.
+        </p>
+      </div>
+      <div class="card">
+        <strong>Interactive Audio</strong>
+        <p style="color: #c7cfdb">
+          Procedural soundscapes and responsive voice for installations.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

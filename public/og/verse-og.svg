@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0f14"/>
+      <stop offset="1" stop-color="#0f141b"/>
+    </linearGradient>
+    <radialGradient id="ring" cx="0.5" cy="0.4" r="0.6">
+      <stop offset="0" stop-color="#7fb3ff" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#2f6af6" stop-opacity="0.15"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="980" cy="-60" r="420" fill="url(#ring)"/>
+  <circle cx="-60" cy="560" r="360" fill="url(#ring)" opacity="0.45"/>
+  <g transform="translate(80, 190)">
+    <text x="0" y="0" font-family="Space Grotesk, Inter, Arial, Helvetica, sans-serif" font-size="92" font-weight="700" fill="#f5f7fb">Verse Studio</text>
+    <text x="0" y="72" font-family="Inter, Arial, Helvetica, sans-serif" font-size="40" font-weight="500" fill="#c7cfdb">Human vision × AI computation</text>
+  </g>
+</svg>
+

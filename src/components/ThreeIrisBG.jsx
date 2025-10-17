@@ -1,6 +1,6 @@
 import { Suspense, useEffect, useMemo, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Html, Line } from "@react-three/drei";
+import { Html, Line, MeshTransmissionMaterial } from "@react-three/drei";
 import * as THREE from "three";
 
 const useReducedMotion = () => {
@@ -68,6 +68,38 @@ function makeIrisMaterial() {
   });
 }
 
+// Lightweight additive glow backdrop behind the iris
+function makeGlowMaterial() {
+  const uniforms = {
+    u_color: { value: new THREE.Color("#2f6af6") },
+  };
+  const vertex = /* glsl */`
+    varying vec2 vUv;
+    void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }
+  `;
+  const fragment = /* glsl */`
+    precision highp float;
+    varying vec2 vUv;
+    uniform vec3 u_color;
+    void main(){
+      vec2 p = vUv * 2.0 - 1.0;
+      float d = length(p);
+      float a = smoothstep(0.9, 0.0, d);
+      vec3 col = u_color * (0.35 + 0.65 * (1.0 - d));
+      gl_FragColor = vec4(col, a * 0.35);
+    }
+  `;
+  const mat = new THREE.ShaderMaterial({
+    uniforms,
+    vertexShader: vertex,
+    fragmentShader: fragment,
+    transparent: true,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+  });
+  return mat;
+}
+
 function NodeSphere({ position = [0, 0, 0], color = "#7fb3ff", scale = 0.02 }) {
   return (
     <mesh position={position} scale={scale}>
@@ -121,19 +153,7 @@ function IrisLens({ reduceMotion, pointerRef }) {
     () => new THREE.MeshStandardMaterial({ color: "#1b2a52", metalness: 0.75, roughness: 0.35 }),
     []
   );
-  const glassMat = useMemo(
-    () =>
-      new THREE.MeshPhysicalMaterial({
-        color: "#ffffff",
-        transmission: 0.5,
-        thickness: 0.5,
-        roughness: 0.1,
-        metalness: 0,
-        transparent: true,
-        opacity: 0.5,
-      }),
-    []
-  );
+  const glowMat = useMemo(() => makeGlowMaterial(), []);
 
   useFrame((state, dt) => {
     if (!reduceMotion) {
@@ -151,6 +171,12 @@ function IrisLens({ reduceMotion, pointerRef }) {
 
   return (
     <group ref={group}>
+      {/* Soft additive glow behind the iris */}
+      <mesh position={[0, 0, -0.4]} scale={2.6}>
+        <planeGeometry args={[2.4, 2.4, 1, 1]} />
+        <primitive object={glowMat} attach="material" />
+      </mesh>
+
       <mesh>
         <ringGeometry args={[1.15, 1.45, 96, 1]} />
         <primitive object={ringMat} attach="material" />
@@ -165,7 +191,21 @@ function IrisLens({ reduceMotion, pointerRef }) {
       </mesh>
       <mesh position={[0, 0, 0.02]}>
         <circleGeometry args={[1.48, 64]} />
-        <primitive object={glassMat} attach="material" />
+        <MeshTransmissionMaterial
+          background={null}
+          thickness={0.6}
+          roughness={0.02}
+          ior={1.3}
+          chromaticAberration={0.13}
+          anisotropy={0.1}
+          samples={4}
+          temporalDistortion={0.08}
+          distortion={0.1}
+          distortionScale={0.15}
+          attenuationColor="#7fb3ff"
+          attenuationDistance={2.5}
+          envMapIntensity={0.5}
+        />
       </mesh>
     </group>
   );

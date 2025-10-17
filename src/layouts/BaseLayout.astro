@@ -16,11 +16,15 @@ import "../styles/global.css";
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://verse-studio.com" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://verse-studio.com" />
+    <meta property="og:image" content="/og/verse-og.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#0b0f14" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -55,5 +59,24 @@ import "../styles/global.css";
       <p>© {new Date().getFullYear()} Verse Studio</p>
       <p><a href="mailto:info@verse-studio.com">info@verse-studio.com</a></p>
     </footer>
+    <script is:inline>
+      // Update CSS vars for cursor-reactive highlights (throttled)
+      (function () {
+        const root = document.documentElement;
+        let raf = null;
+        function set(e) {
+          const x = e.clientX || innerWidth * 0.5;
+          const y = e.clientY || innerHeight * 0.3;
+          root.style.setProperty('--mx', x + 'px');
+          root.style.setProperty('--my', y + 'px');
+        }
+        window.addEventListener('pointermove', (e) => {
+          if (raf) cancelAnimationFrame(raf);
+          raf = requestAnimationFrame(() => set(e));
+        }, { passive: true });
+        // Seed position
+        set({ clientX: innerWidth * 0.6, clientY: innerHeight * 0.3 });
+      })();
+    </script>
   </body>
 </html>

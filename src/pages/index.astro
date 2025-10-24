@@ -39,6 +39,24 @@ import ThreeIrisBG from "../components/ThreeIrisBG.jsx";
       </div>
     </div>
 
+    <!-- Flagship feature video (prominent) -->
+    <div class="panel panel--feature">
+      <span class="badge">Flagship</span>
+      <div class="video-wrap feature-video">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/owTpoxUR_lQ?rel=0"
+          title="Verse Studio — Film Clips Showcase"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          referrerpolicy="strict-origin-when-cross-origin"
+        ></iframe>
+      </div>
+      <p style="margin-top:10px">
+        <a class="btn" href="https://youtu.be/owTpoxUR_lQ" target="_blank" rel="noopener">Watch on YouTube</a>
+      </p>
+    </div>
+
     <div class="panels-grid">
       <div class="panel">
         <span class="badge">AI-powered Podcast</span>
@@ -89,6 +107,8 @@ import ThreeIrisBG from "../components/ThreeIrisBG.jsx";
 </BaseLayout>
 
 <style>
+  .panel--feature { padding: clamp(16px, 3vw, 24px); }
+  .feature-video { margin-top: 8px; }
   .video-wrap {
     position: relative;
     width: 100%;

@@ -148,6 +148,7 @@ function NeuralRings({ reduceMotion }) {
 
 function IrisLens({ reduceMotion, pointerRef }) {
   const group = useRef();
+  const irisRef = useRef();
   const irisMat = useMemo(() => makeIrisMaterial(), []);
   const ringMat = useMemo(
     () => new THREE.MeshStandardMaterial({ color: "#1b2a52", metalness: 0.75, roughness: 0.35 }),
@@ -158,12 +159,15 @@ function IrisLens({ reduceMotion, pointerRef }) {
   useFrame((state, dt) => {
     if (!reduceMotion) {
       irisMat.uniforms.u_time.value += dt;
-      if (group.current) group.current.rotation.z += dt * 0.1;
+      // Rotate only the iris mesh, not the whole assembly (pupil stays static)
+      if (irisRef.current) irisRef.current.rotation.z += dt * 0.1;
     }
     const p = pointerRef.current;
     const targetX = (p.y || 0) * 0.12;
     const targetY = (p.x || 0) * 0.12;
     if (group.current) {
+      // Lock Z so the whole assembly never spins around the center
+      group.current.rotation.z = 0;
       group.current.rotation.x += (targetX - group.current.rotation.x) * 0.075;
       group.current.rotation.y += (targetY - group.current.rotation.y) * 0.075;
     }
@@ -181,13 +185,22 @@ function IrisLens({ reduceMotion, pointerRef }) {
         <ringGeometry args={[1.15, 1.45, 96, 1]} />
         <primitive object={ringMat} attach="material" />
       </mesh>
-      <mesh>
-        <circleGeometry args={[1.0, 128]} />
+      <mesh ref={irisRef}>
+        {/* Use a ring so no pixels under the pupil can show/rotate */}
+        <ringGeometry args={[0.44, 1.0, 128, 1]} />
         <primitive object={irisMat} attach="material" />
       </mesh>
+      {/* Static, glossy black lens-like pupil (slightly larger than ring inner radius) */}
       <mesh>
-        <circleGeometry args={[0.35, 64]} />
-        <meshStandardMaterial color="#000000" roughness={0.3} metalness={0.6} />
+        <circleGeometry args={[0.46, 64]} />
+        <meshPhysicalMaterial
+          color="#000000"
+          roughness={0.08}
+          metalness={0.0}
+          clearcoat={1.0}
+          clearcoatRoughness={0.06}
+          ior={1.5}
+        />
       </mesh>
       <mesh position={[0, 0, 0.02]}>
         <circleGeometry args={[1.48, 64]} />

@@ -1,0 +1,212 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+<BaseLayout
+  title="How It Was Made — Funny Couple | Verse Studio"
+  description="Behind the scenes of Verse Studio's &quot;Funny Couple&quot; AI-assisted video: process, tools, and creative approach."
+>
+  <div class="blog-page">
+    <section class="section blog-section">
+      <article class="card blog-article">
+        <header class="blog-header" style="margin-bottom:18px">
+          <span class="badge">Behind the Scenes</span>
+          <h1 style="margin:10px 0 6px">Verse Vids Ep. 3 – Funny Couple: Behind the Scenes</h1>
+        </header>
+
+        <div class="blog-body" style="display:flex; flex-direction:column; gap:18px; max-width:74ch">
+          <p>
+            Let me say right off the bat that this was very much a pre–Nano Banana Pro video. And as such, it was
+            very difficult to make. More on why Nano Banana Pro could be a game-changer for AI video creators below.
+          </p>
+        <p>
+          First, though, I’ll explain what I was trying to do with this video. I see a lot of AI-generated stuff
+          every day, and while much of it is technically impressive, it often has the aesthetic feel of slop due
+          to the subject matter. It will be some vague science-fiction concept, featuring spaceships or robots or
+          animé-style figures. It’s very rare to see something that really feels human. And it’s even more rare to
+          see something with consistent human characters. I wanted to make something quiet, with real-feeling people
+          having a warm exchange.
+        </p>
+        <p>
+          Of course, there’s a good reason that you don’t see many videos like that. It is extremely difficult to
+          do. Trying to depict photorealistic humans is an invitation to the uncanny valley. We have a much better
+          feel for what’s not real when we’re looking at stuff that’s supposed to feel very familiar to us. Giant
+          mecha robots aren’t part of everyday life, so we don’t have that uneasy feeling of something being off
+          when watching videos of them.
+        </p>
+        <p>
+          And, as a16z’s Justine Moore has
+          <a href="https://x.com/venturetwins/status/1909630728847192334?s=20" target="_blank" rel="noopener noreferrer">
+            pointed out
+          </a>
+          more than once, character consistency has been a huge unsolved problem for a long time. It took so many video
+          generations to get characters who appear even somewhat consistent for this video, even when using the same
+          starter images for everything. And after a lot of painstaking work, they’re still not totally consistent.
+        </p>
+        <p>
+          Still, I found some workflows that generally produced decent results, after enough attempts. It all started
+          with a Midjourney image of a cozy British living room populated by a couple of elderly figures. I brought
+          that over to Nano Banana – the original version – and attempted to see that room and those characters from a
+          few different angles. It was frustrating; the original Nano Banana was remarkably inconsistent in doing what
+          it was asked to do. I’d say something like, “replace the toaster with a cutting board and a loaf of bread,”
+          and it would, and I would be like, “Incredible. We have reached AGI.” Then I would say, “Zoom out slightly,”
+          and it would produce the exact same image as before, and I would be like, “This is terrible. Google has
+          absolutely fumbled this tech.”
+        </p>
+        <p>
+          Anyway, when I had more or less the images I needed, I usually took them to Veo 3.1. Veo is a very good
+          tool. It’s inconsistent, but it’s very good. And its capability of generating sounds and dialogue that
+          match the action is remarkable.
+        </p>
+        <p>
+          A number of other tools were used, often in vain. I don’t want to name and shame the worst ones. I will say
+          that Kling and Wan were sometimes helpful. A fun hack that I discovered late in the process was generating a
+          longer video that would simply pan around the room, as part of a desperate attempt to get certain angles. One
+          such Sora generation got me the Kit-Kat clock on the wall. I might try that again in the future.
+        </p>
+        <p>
+          This is where Nano Banana Pro shows a lot of promise. At the time of writing, I haven’t had the chance to
+          play around with it very much yet. But it is said to have very powerful spatial reasoning, which would solve
+          a key issue I have encountered in making this video and others – the difficulty that various video-generation
+          models have in “imagining” other angles of a scene. Nano Banana Pro also is said to have a built-in
+          character-consistency feature, which will obviously be a game-changer.
+        </p>
+        <p>
+          Back to my process for this video: The usable videos I ended up with were cut together in DaVinci Resolve,
+          and some sound issues were fixed using ElevenLabs – notably, getting a more consistent voice for the old man
+          across different clips. Somehow the woman’s voice ended up sounding pretty consistent across different video
+          generations, at least for the ones I ended up using. I also added some ambient background noise: the ticking
+          clock and chirping birds.
+        </p>
+        <p>
+          Going forward, I’m looking forward to trying out Nano Banana Pro and testing how well it really can solve my
+          biggest challenges, but I think I’ll need a break from realism for a couple of weeks, at least. Sometimes we
+          all need a break from realism.
+        </p>
+          <p class="blog-byline">Alex Perala / @lagomrad</p>
+        </div>
+      </article>
+    </section>
+  </div>
+</BaseLayout>
+
+<style is:global>
+  body {
+    background: #ffffff;
+  }
+
+  .site-header .brand span {
+    color: #0f172a;
+  }
+
+  .site-header .top-nav a {
+    color: #f5f7fb;
+    background:
+      radial-gradient(120% 120% at 0% 0%, rgba(148, 163, 184, 0.35), transparent 55%),
+      linear-gradient(135deg, #0f172a, #111827);
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(15, 23, 42, 0.5);
+    margin-left: 12px;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.35);
+    opacity: 1;
+  }
+</style>
+
+<style>
+  .blog-page {
+    background: #ffffff;
+    padding: 32px 0 72px;
+  }
+
+  .blog-section {
+    max-width: 900px;
+    margin: 60px auto 0;
+    padding: 0 20px;
+    border-top: none;
+  }
+
+  .blog-article {
+    position: relative;
+    border-radius: 18px;
+    padding: 26px 24px 28px;
+    background-color: #ffffff;
+    color: #26211a;
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+  }
+
+  .blog-article::before {
+    content: "";
+    position: absolute;
+    inset: 18px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    background-image: linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 23px,
+      rgba(0, 0, 0, 0.06) 24px
+    );
+    background-size: 100% 28px;
+    opacity: 0.35;
+    pointer-events: none;
+  }
+
+  .blog-article::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.06) 0, transparent 1px),
+      radial-gradient(circle at 3px 3px, rgba(0, 0, 0, 0.035) 0, transparent 1px);
+    background-size: 6px 6px;
+    opacity: 0.3;
+    mix-blend-mode: multiply;
+  }
+
+  .blog-header {
+    position: relative;
+    z-index: 1;
+    font-family: "Georgia", "Times New Roman", serif;
+  }
+
+  .blog-header .badge {
+    background: linear-gradient(90deg, rgba(47, 106, 246, 0.2), rgba(255, 138, 51, 0.2));
+    color: #1f2933;
+  }
+
+  .blog-body {
+    position: relative;
+    z-index: 1;
+    font-family: "Georgia", "Times New Roman", serif;
+    font-size: 1.03rem;
+    line-height: 1.8;
+    color: #26211a;
+  }
+
+  .blog-body p + p {
+    margin-top: 0.4em;
+  }
+
+  .blog-body a {
+    color: #1f4aff;
+    text-decoration: underline;
+  }
+
+  .blog-byline {
+    margin-top: 1.4em;
+    font-style: italic;
+  }
+
+  @media (max-width: 700px) {
+    .blog-article {
+      padding: 22px 18px 24px;
+    }
+
+    .blog-article::before {
+      inset: 16px 12px;
+    }
+  }
+</style>

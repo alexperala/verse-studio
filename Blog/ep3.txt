@@ -1,0 +1,26 @@
+
+ Verse Vids Ep. 3 – Funny Couple: Behind the Scenes
+
+
+
+ Let me say right off the bat that this was very much a pre–Nano Banana Pro video. And as such, it was very difficult to make. More on why Nano Banana Pro could be a game-changer for AI video creators below.
+
+ First, though, I’ll explain what I was trying to do with this video. I see a lot of AI-generated stuff every day, and while much of it is technically impressive, it often has the aesthetic feel of slop due to the subject matter. It will be some vague science-fiction concept, featuring spaceships or robots or animé-style figures. It’s very rare to see something that really feels human. And it’s even more rare to see something with consistent human characters. I wanted to make something quiet, with real-feeling people having a warm exchange.
+
+ Of course, there’s a good reason that you don’t see many videos like that. It is extremely difficult to do. Trying to depict photorealistic humans is an invitation to the uncanny valley. We have a much better feel for what’s not real when we’re looking at stuff that’s supposed to feel very familiar to us. Giant mecha robots aren’t part of everyday life, so we don’t have that uneasy feeling of something being off when watching videos of them.
+
+ And, as a16z’s Justine Moore has  pointed out  more than once, character consistency has been a huge unsolved problem for a long time. It took so many video generations to get characters who appear even somewhat consistent for this video, even when using the same starter images for everything. And after a lot of painstaking work, they’re still not totally consistent.
+
+ Still, I found some workflows that generally produced decent results, after enough attempts. It all started with a Midjourney image of a cozy British living room populated by a couple of elderly figures. I brought that over to Nano Banana – the original version – and attempted to see that room and those characters from a few different angles. It was frustrating; the original Nano Banana was remarkably inconsistent in doing what it was asked to do. I’d say something like, “replace the toaster with a cutting board and a loaf of bread,” and it would, and I would be like, “Incredible. We have reached AGI.” Then I would say, “Zoom out slightly,” and it would produce the exact same image as before, and I would be like, “This is terrible. Google has absolutely fumbled this tech.”
+
+ Anyway, when I had more or less the images I needed, I usually took them to Veo 3.1. Veo is a very good tool. It’s inconsistent, but it’s very good. And its capability of generating sounds and dialogue that match the action is remarkable.
+
+ A number of other tools were used, often in vain. I don’t want to name and shame the worst ones. I will say that Kling and Wan were sometimes helpful. A fun hack that I discovered late in the process was generating a longer video that would simply pan around the room, as part of a desperate attempt to get certain angles. One such Sora generation got me the Kit-Kat clock on the wall. I might try that again in the future.
+
+ This is where Nano Banana Pro shows a lot of promise. At the time of writing, I haven’t had the chance to play around with it very much yet. But it is said to have very powerful spatial reasoning, which would solve a key issue I have encountered in making this video and others – the difficulty that various video-generation models have in “imagining” other angles of a scene. Nano Banana Pro also is said to have a built-in character-consistency feature, which will obviously be a game-changer.
+
+ Back to my process for this video: The usable videos I ended up with were cut together in DaVinci Resolve, and some sound issues were fixed using ElevenLabs – notably, getting a more consistent voice for the old man across different clips. Somehow the woman’s voice ended up sounding pretty consistent across different video generations, at least for the ones I ended up using. I also added some ambient background noise: the ticking clock and chirping birds.
+
+ Going forward, I’m looking forward to trying out Nano Banana Pro and testing how well it really can solve my biggest challenges, but I think I’ll need a break from realism for a couple of weeks, at least. Sometimes we all need a break from realism.
+
+ Alex Perala / @lagomrad

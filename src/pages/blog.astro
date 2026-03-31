@@ -1,0 +1,122 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { blogPosts } from "../data/blog";
+---
+<BaseLayout
+  title="Blog | Verse Studio"
+  description="Behind-the-scenes notes and production writeups from Verse Studio."
+>
+  <section class="section blog-index">
+    <div class="blog-index__intro">
+      <span class="badge">Blog</span>
+      <h1>Process notes, breakdowns, and production writeups</h1>
+      <p>
+        Verse Studio uses this space for behind-the-scenes posts tied to finished releases,
+        especially when a video or workflow needs a fuller explanation than the homepage can carry.
+      </p>
+    </div>
+
+    <div class="blog-list">
+      {blogPosts.map((post) => (
+        <article class="card blog-card">
+          <div class="blog-card__meta">
+            <span class="badge">{post.badge}</span>
+            <span class="blog-card__date">{post.publishedLabel}</span>
+          </div>
+          <h2>
+            <a href={post.href}>{post.title}</a>
+          </h2>
+          <p>{post.summary}</p>
+          {post.relatedVideoTitle && (
+            <p class="blog-card__context">Related release: {post.relatedVideoTitle}</p>
+          )}
+          <p>
+            <a class="btn" href={post.href}>Read Post</a>
+          </p>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .blog-index {
+    padding-top: 24px;
+  }
+
+  .blog-index__intro {
+    max-width: 760px;
+    margin-bottom: 28px;
+  }
+
+  .blog-index__intro h1 {
+    margin: 14px 0 12px;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    line-height: 1.05;
+  }
+
+  .blog-index__intro p {
+    margin: 0;
+    max-width: 62ch;
+    color: var(--muted);
+    font-size: 1.05rem;
+  }
+
+  .blog-list {
+    display: grid;
+    gap: 20px;
+  }
+
+  .blog-card {
+    padding: 24px;
+  }
+
+  .blog-card__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .blog-card__date {
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  .blog-card h2 {
+    margin: 0 0 10px;
+    font-size: clamp(1.35rem, 3vw, 1.9rem);
+  }
+
+  .blog-card h2 a {
+    color: var(--fg);
+  }
+
+  .blog-card p {
+    margin: 0;
+    max-width: 68ch;
+    color: #d4d9e3;
+  }
+
+  .blog-card__context {
+    margin-top: 14px;
+    color: var(--blue-2);
+    font-weight: 600;
+  }
+
+  .blog-card .btn {
+    margin-top: 18px;
+  }
+
+  @media (max-width: 700px) {
+    .blog-card {
+      padding: 20px;
+    }
+
+    .blog-card__meta {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>

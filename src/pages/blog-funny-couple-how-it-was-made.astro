@@ -1,16 +1,20 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { blogPosts } from "../data/blog";
+
+const post = blogPosts.find(({ slug }) => slug === "funny-couple-how-it-was-made");
 ---
 <BaseLayout
-  title="How It Was Made — Funny Couple | Verse Studio"
-  description="Behind the scenes of Verse Studio's &quot;Funny Couple&quot; AI-assisted video: process, tools, and creative approach."
+  title={`${post?.title ?? "How It Was Made — Funny Couple"} | Verse Studio`}
+  description={post?.summary ?? "Behind the scenes of Verse Studio's &quot;Funny Couple&quot; AI-assisted video: process, tools, and creative approach."}
 >
   <div class="blog-page">
     <section class="section blog-section">
       <article class="card blog-article">
         <header class="blog-header" style="margin-bottom:18px">
-          <span class="badge">Behind the Scenes</span>
-          <h1 style="margin:10px 0 6px">Verse Vids Ep. 3 – Funny Couple: Behind the Scenes</h1>
+          <a class="blog-back" href="/blog">Back to blog</a>
+          <span class="badge">{post?.badge ?? "Behind the Scenes"}</span>
+          <h1 style="margin:10px 0 6px">{post?.title ?? "Verse Vids Ep. 3 – Funny Couple: Behind the Scenes"}</h1>
         </header>
 
         <div class="blog-body" style="display:flex; flex-direction:column; gap:18px; max-width:74ch">
@@ -175,6 +179,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   .blog-header .badge {
     background: linear-gradient(90deg, rgba(47, 106, 246, 0.2), rgba(255, 138, 51, 0.2));
     color: #1f2933;
+  }
+
+  .blog-back {
+    display: inline-flex;
+    margin-bottom: 12px;
+    color: #334155;
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
   }
 
   .blog-body {

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ThreeIrisBG from "../components/ThreeIrisBG.jsx";
+import { latestBlogPost } from "../data/blog";
 ---
 <BaseLayout title="Verse Studio — New creative media studio (AI-first)">
   {/* Full-screen 3D background */}
@@ -54,9 +55,11 @@ import ThreeIrisBG from "../components/ThreeIrisBG.jsx";
       </div>
       <p style="margin-top:10px; color:#c7cfdb; max-width:60ch">
         A warm exchange between an older British couple as they enjoy a nice day at home. The video and audio are entirely AI-generated.
-        <a href="/blog-funny-couple-how-it-was-made" style="margin-left:6px; color:var(--blue-2); font-weight:600; text-decoration:underline">
-          How It Was Made
-        </a>
+        {latestBlogPost && (
+          <a href={latestBlogPost.href} style="margin-left:6px; color:var(--blue-2); font-weight:600; text-decoration:underline">
+            How It Was Made
+          </a>
+        )}
       </p>
       <p style="margin-top:8px">
         <a class="btn" href="https://youtu.be/MudXCFMwbMQ" target="_blank" rel="noopener">Watch on YouTube</a>

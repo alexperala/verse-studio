@@ -1,23 +1,20 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import ThreeIrisBG from "../components/ThreeIrisBG.jsx";
 import { latestBlogPost } from "../data/blog";
 ---
 <BaseLayout title="Verse Studio — New creative media studio (AI-first)">
-  {/* Full-screen 3D background */}
-  <ThreeIrisBG client:load />
+  <div class="page">
 
-  {/* Overlay content */}
-  <section class="overlay">
-    <div class="panel panel--hero">
-      <p class="kicker">New creative media studio</p>
+    <!-- Hero -->
+    <section class="hero">
+      <p class="kicker">New creative media studio — AI-first, artist-led</p>
       <h1 class="hero-title">
-        Human creativity × <span style="color:var(--blue-2)">AI tools</span>
+        Human creativity<br>
+        <em>× AI tools</em>
       </h1>
       <p class="hero-sub">
         Verse Studio pairs human artistry with generative AI technology to craft filmic visuals,
-        immersive sound, and intelligent media systems. We are exploring the new frontier of media
-        with a mix of intuition, computation, and ingenuity.
+        immersive sound, and intelligent media systems.
       </p>
       <div class="ctas">
         <a
@@ -29,21 +26,16 @@ import { latestBlogPost } from "../data/blog";
           <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M8 5v14l11-7z" />
           </svg>
-          Listen: Morning News Update
+          Morning News Update
         </a>
-        <a class="btn" href="mailto:alex@verse-studio.com">
-          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-          </svg>
-          Work with Verse Studio
-        </a>
+        <a class="btn" href="mailto:alex@verse-studio.com">Work with us</a>
       </div>
-    </div>
+    </section>
 
-    <!-- Flagship feature video (prominent) -->
-    <div class="panel panel--feature">
-      <span class="badge">Flagship</span>
-      <div class="video-wrap feature-video">
+    <!-- Flagship video -->
+    <section class="content-section">
+      <div class="section-label">Flagship</div>
+      <div class="video-wrap feature-wrap">
         <iframe
           src="https://www.youtube-nocookie.com/embed/MudXCFMwbMQ?rel=0"
           title="Verse Studio — Funny Couple"
@@ -53,23 +45,18 @@ import { latestBlogPost } from "../data/blog";
           referrerpolicy="strict-origin-when-cross-origin"
         ></iframe>
       </div>
-      <p style="margin-top:10px; color:#c7cfdb; max-width:60ch">
-        A warm exchange between an older British couple as they enjoy a nice day at home. The video and audio are entirely AI-generated.
+      <p class="video-caption">
+        A warm exchange between an older British couple as they enjoy a nice day at home. Video and audio entirely AI-generated.
         {latestBlogPost && (
-          <a href={latestBlogPost.href} style="margin-left:6px; color:var(--blue-2); font-weight:600; text-decoration:underline">
-            How It Was Made
-          </a>
+          <a href={latestBlogPost.href} class="caption-link">How It Was Made →</a>
         )}
       </p>
-      <p style="margin-top:8px">
-        <a class="btn" href="https://youtu.be/MudXCFMwbMQ" target="_blank" rel="noopener">Watch on YouTube</a>
-      </p>
-    </div>
+    </section>
 
-    <!-- Previous feature + other episodes -->
-    <div class="panels-grid">
-      <div class="panel">
-        <span class="badge">Previous Feature</span>
+    <!-- Recent work -->
+    <section class="content-section">
+      <div class="section-label">Recent Work</div>
+      <div class="video-grid">
         <div class="video-wrap">
           <iframe
             src="https://www.youtube-nocookie.com/embed/owTpoxUR_lQ?rel=0"
@@ -80,9 +67,6 @@ import { latestBlogPost } from "../data/blog";
             referrerpolicy="strict-origin-when-cross-origin"
           ></iframe>
         </div>
-      </div>
-      <div class="panel">
-        <span class="badge">YouTube</span>
         <div class="video-wrap">
           <iframe
             src="https://www.youtube-nocookie.com/embed/1U0iUzdj2bA?rel=0"
@@ -93,9 +77,6 @@ import { latestBlogPost } from "../data/blog";
             referrerpolicy="strict-origin-when-cross-origin"
           ></iframe>
         </div>
-      </div>
-      <div class="panel">
-        <span class="badge">YouTube</span>
         <div class="video-wrap">
           <iframe
             src="https://www.youtube-nocookie.com/embed/J1kbzwG4QRU?rel=0"
@@ -107,17 +88,17 @@ import { latestBlogPost } from "../data/blog";
           ></iframe>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Long podcast promo panel -->
-    <div class="panel">
-      <span class="badge">AI-powered Podcast</span>
-      <h3 style="margin:10px 0 6px">Morning News Update</h3>
-      <p style="color:#c7cfdb; max-width:60ch">
-        Our first live release: a fast, daily news podcast powered by advanced speech synthesis
-        and automated editorial pipelines. Built to sound human—because the vision behind it is.
-      </p>
-      <p style="margin-top:12px">
+    <!-- Podcast -->
+    <section class="content-section">
+      <div class="section-label">Podcast</div>
+      <div class="podcast-block">
+        <h2>Morning News Update</h2>
+        <p>
+          A fast, daily news podcast powered by advanced speech synthesis and automated editorial pipelines.
+          Built to sound human — because the vision behind it is.
+        </p>
         <a
           class="btn btn-primary"
           href="https://morning-news-update.podbean.com/"
@@ -126,29 +107,182 @@ import { latestBlogPost } from "../data/blog";
         >
           Visit Podcast
         </a>
-      </p>
-    </div>
-  </section>
+      </div>
+    </section>
+
+  </div>
 </BaseLayout>
 
 <style>
-  .panel--feature { padding: clamp(16px, 3vw, 24px); }
-  .feature-video { margin-top: 8px; }
+  .page {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 52px 28px 128px;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    padding: 80px 0 96px;
+    max-width: 900px;
+  }
+
+  .kicker {
+    display: inline-block;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    background: var(--fg);
+    padding: 5px 12px;
+    border-radius: 2px;
+    margin-bottom: 28px;
+    animation: appear 0.6s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(4rem, 9vw, 9rem);
+    font-weight: 500;
+    line-height: 0.9;
+    letter-spacing: -0.015em;
+    margin: 0 0 36px;
+    color: var(--fg);
+    animation: appear 0.7s 0.07s ease both;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--teal);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 50ch;
+    line-height: 1.75;
+    margin-bottom: 40px;
+    animation: appear 0.7s 0.16s ease both;
+  }
+
+  .ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    animation: appear 0.7s 0.24s ease both;
+  }
+
+  /* ── Section label ── */
+  .content-section {
+    margin-bottom: 84px;
+  }
+
+  .section-label {
+    font-size: 0.66rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--pink);
+    padding-bottom: 13px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 28px;
+  }
+
+  /* ── Videos ── */
   .video-wrap {
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 9;
-    border-radius: 12px;
+    background: #dde2ea;
     overflow: hidden;
-    background: #000;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-    margin-top: 8px;
   }
+
   .video-wrap iframe {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     border: 0;
+  }
+
+  .feature-wrap {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.06),
+      0 6px 24px rgba(0, 0, 0, 0.06),
+      0 20px 60px rgba(0, 0, 0, 0.05);
+  }
+
+  .video-caption {
+    margin-top: 16px;
+    font-size: 0.88rem;
+    color: var(--muted);
+    max-width: 72ch;
+    line-height: 1.65;
+  }
+
+  .caption-link {
+    color: var(--teal);
+    margin-left: 10px;
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(0, 204, 180, 0.4);
+    transition: text-decoration-color 180ms;
+  }
+
+  .caption-link:hover {
+    opacity: 1;
+    text-decoration-color: var(--teal);
+  }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .video-grid .video-wrap {
+    border: 1px solid rgba(0, 0, 0, 0.07);
+  }
+
+  /* ── Podcast ── */
+  .podcast-block h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.8rem, 3.5vw, 3rem);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin: 0 0 14px;
+  }
+
+  .podcast-block p {
+    color: var(--muted);
+    max-width: 56ch;
+    line-height: 1.75;
+    font-size: 0.95rem;
+    margin: 0 0 28px;
+  }
+
+  /* ── Animation ── */
+  @keyframes appear {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .kicker, .hero-title, .hero-sub, .ctas {
+      animation: none;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .hero { padding: 52px 0 68px; }
+    .video-grid { grid-template-columns: 1fr; gap: 14px; }
+    .page { padding: 32px 20px 80px; }
   }
 </style>

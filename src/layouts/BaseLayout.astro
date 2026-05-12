@@ -29,28 +29,16 @@ const hasBlog = blogPosts.length > 0;
     <meta property="og:url" content="https://verse-studio.com" />
     <meta property="og:image" content="/og/verse-og.svg" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="theme-color" content="#0b0f14" />
+    <meta name="theme-color" content="#f6f3ee" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="/">
-        <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="12" cy="12" r="11" fill="url(#g)" />
-          <defs>
-            <radialGradient id="g">
-              <stop offset="0" stop-color="#7fb3ff" />
-              <stop offset="0.6" stop-color="#1f4aff" />
-              <stop offset="1" stop-color="#0b0f14" />
-            </radialGradient>
-          </defs>
-        </svg>
-        <span>Verse Studio</span>
-      </a>
+      <a class="brand" href="/">Verse Studio</a>
       <nav class="top-nav">
         {hasBlog && <a href="/blog">Blog</a>}
         <a href="https://morning-news-update.podbean.com/" rel="noopener noreferrer" target="_blank">Podcast</a>
@@ -61,27 +49,8 @@ const hasBlog = blogPosts.length > 0;
       <slot />
     </main>
     <footer class="site-footer">
-      <p>© {new Date().getFullYear()} Verse Studio</p>
-      <p><a href="mailto:info@verse-studio.com">info@verse-studio.com</a></p>
+      <span>© {new Date().getFullYear()} Verse Studio</span>
+      <a href="mailto:info@verse-studio.com">info@verse-studio.com</a>
     </footer>
-    <script is:inline>
-      // Update CSS vars for cursor-reactive highlights (throttled)
-      (function () {
-        const root = document.documentElement;
-        let raf = null;
-        function set(e) {
-          const x = e.clientX || innerWidth * 0.5;
-          const y = e.clientY || innerHeight * 0.3;
-          root.style.setProperty('--mx', x + 'px');
-          root.style.setProperty('--my', y + 'px');
-        }
-        window.addEventListener('pointermove', (e) => {
-          if (raf) cancelAnimationFrame(raf);
-          raf = requestAnimationFrame(() => set(e));
-        }, { passive: true });
-        // Seed position
-        set({ clientX: innerWidth * 0.6, clientY: innerHeight * 0.3 });
-      })();
-    </script>
   </body>
 </html>

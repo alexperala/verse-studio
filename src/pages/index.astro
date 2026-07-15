@@ -37,8 +37,8 @@ import { latestBlogPost } from "../data/blog";
       <div class="section-label">Flagship</div>
       <div class="video-wrap feature-wrap">
         <iframe
-          src="https://www.youtube-nocookie.com/embed/MudXCFMwbMQ?rel=0"
-          title="Verse Studio — Funny Couple"
+          src="https://www.youtube-nocookie.com/embed/wnSPzx93-UU?rel=0"
+          title="Verse Ambient — A Quiet Year in the Japanese Countryside"
           loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
@@ -46,10 +46,13 @@ import { latestBlogPost } from "../data/blog";
         ></iframe>
       </div>
       <p class="video-caption">
-        A warm exchange between an older British couple as they enjoy a nice day at home. Video and audio entirely AI-generated.
-        {latestBlogPost && (
-          <a href={latestBlogPost.href} class="caption-link">How It Was Made →</a>
-        )}
+        A quiet journey through the Japanese countryside across four seasons, pairing anime-inspired landscapes with original ambient and experimental music.
+        <a
+          href="https://www.youtube.com/watch?v=wnSPzx93-UU"
+          class="caption-link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Watch on Verse Ambient →</a>
       </p>
     </section>
 
@@ -57,36 +60,63 @@ import { latestBlogPost } from "../data/blog";
     <section class="content-section">
       <div class="section-label">Recent Work</div>
       <div class="video-grid">
-        <div class="video-wrap">
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/owTpoxUR_lQ?rel=0"
-            title="Verse Studio — Tunnel Attack"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            referrerpolicy="strict-origin-when-cross-origin"
-          ></iframe>
-        </div>
-        <div class="video-wrap">
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/1U0iUzdj2bA?rel=0"
-            title="Verse Studio — YouTube Video 1"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            referrerpolicy="strict-origin-when-cross-origin"
-          ></iframe>
-        </div>
-        <div class="video-wrap">
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/J1kbzwG4QRU?rel=0"
-            title="Verse Studio — YouTube Video 2"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            referrerpolicy="strict-origin-when-cross-origin"
-          ></iframe>
-        </div>
+        <article class="work-card">
+          <div class="video-wrap">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/MudXCFMwbMQ?rel=0"
+              title="Verse Studio — Funny Couple"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              referrerpolicy="strict-origin-when-cross-origin"
+            ></iframe>
+          </div>
+          <div class="work-meta">
+            <span>Funny Couple</span>
+            {latestBlogPost && (
+              <a href={latestBlogPost.href}>How It Was Made →</a>
+            )}
+          </div>
+        </article>
+        <article class="work-card">
+          <div class="video-wrap">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/owTpoxUR_lQ?rel=0"
+              title="Verse Studio — Tunnel Attack"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              referrerpolicy="strict-origin-when-cross-origin"
+            ></iframe>
+          </div>
+          <div class="work-meta"><span>Tunnel Attack</span></div>
+        </article>
+        <article class="work-card">
+          <div class="video-wrap">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/1U0iUzdj2bA?rel=0"
+              title="Verse Studio — Hello World!"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              referrerpolicy="strict-origin-when-cross-origin"
+            ></iframe>
+          </div>
+          <div class="work-meta"><span>Hello World!</span></div>
+        </article>
+        <article class="work-card">
+          <div class="video-wrap">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/J1kbzwG4QRU?rel=0"
+              title="Verse Studio — AI Jeans Ad"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              referrerpolicy="strict-origin-when-cross-origin"
+            ></iframe>
+          </div>
+          <div class="work-meta"><span>AI Jeans Ad</span></div>
+        </article>
       </div>
     </section>
 
@@ -237,12 +267,43 @@ import { latestBlogPost } from "../data/blog";
 
   .video-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px 18px;
   }
 
   .video-grid .video-wrap {
     border: 1px solid rgba(0, 0, 0, 0.07);
+  }
+
+  .work-card {
+    min-width: 0;
+  }
+
+  .work-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: baseline;
+    margin-top: 11px;
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+
+  .work-meta span {
+    color: var(--fg);
+    font-weight: 500;
+  }
+
+  .work-meta a {
+    color: var(--teal);
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 204, 180, 0.4);
+    text-underline-offset: 3px;
+    white-space: nowrap;
+  }
+
+  .work-meta a:hover {
+    text-decoration-color: var(--teal);
   }
 
   /* ── Podcast ── */
@@ -282,7 +343,7 @@ import { latestBlogPost } from "../data/blog";
 
   @media (max-width: 700px) {
     .hero { padding: 52px 0 68px; }
-    .video-grid { grid-template-columns: 1fr; gap: 14px; }
+    .video-grid { grid-template-columns: 1fr; gap: 24px; }
     .page { padding: 32px 20px 80px; }
   }
 </style>

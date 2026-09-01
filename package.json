@@ -1,20 +1,12 @@
 {
-  "name": "verse-studio",
+  "name": "verse-studio-workspace",
+  "private": true,
   "type": "module",
-  "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@astrojs/react": "^4.3.1",
-    "@react-three/drei": "^10.7.6",
-    "@react-three/fiber": "^9.3.0",
-    "astro": "^5.13.10",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "three": "^0.180.0"
+    "install:website": "npm --prefix website install",
+    "dev": "npm --prefix website run dev",
+    "build": "npm --prefix website run build",
+    "preview": "npm --prefix website run preview",
+    "astro": "npm --prefix website run astro"
   }
 }

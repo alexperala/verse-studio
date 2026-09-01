@@ -1,11 +1,14 @@
 # build output
 dist/
+website/dist/
 
 # generated types
 .astro/
+website/.astro/
 
 # dependencies
 node_modules/
+website/node_modules/
 
 # logs
 npm-debug.log*
@@ -16,9 +19,26 @@ pnpm-debug.log*
 # environment variables
 .env
 .env.production
+website/.env
+website/.env.production
+social-media-promotion/.env
+social-media-promotion/.env.*
+
+# local browser/session material for social posting
+social-media-promotion/browser-profile/
+social-media-promotion/session/
 
 # macOS-specific files
 .DS_Store
 
 # jetbrains setting folder
 .idea/
+
+# unpublished master videos and other local launch assets
+distribution-and-growth/master-video-drop/*
+!distribution-and-growth/master-video-drop/README.md
+
+# rendered social video derivatives; retain their sidecar notes and posting logs
+social-media-promotion/daily-social-clips/*.mp4
+social-media-promotion/daily-social-clips/*.mov
+social-media-promotion/daily-social-clips/*.m4v

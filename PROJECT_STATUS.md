@@ -1,7 +1,7 @@
 # Verse Studio — Project Status
 
 As of: 2026-09-01  
-Overall state: operational foundation preserved in version control; active promotion awaits a fresh baseline and restored account sessions
+Overall state: operational foundation preserved; account sessions restored; new-video promotion ready for intake and a fresh baseline
 
 This is the current cross-project status, not an activity log. Update it when a release launches, pauses, resumes, materially changes direction, or when a recurring operational system changes.
 
@@ -11,7 +11,7 @@ Verse Studio now has a functioning public portfolio, a distinct ambient sub-bran
 
 The first campaign showed that the ambient film can hold attention among the small number of people who reach it and that Instagram can repeatedly find non-followers interested in the imagery. It did not yet turn discovery into followers, subscribers, comments, or destination traffic. The immediate strategic problem is audience conversion and catalogue growth, not evidence of a creative or packaging failure.
 
-Alex returned to the project on 2026-09-01 after a multi-week pause. The repository reorganization, operating documentation, campaign history, analytics, and Verse-specific agent procedures have now been consolidated as the durable project record. No new public promotion has begun, and no recurring promotional or measurement automation is currently active.
+Alex returned to the project on 2026-09-01 after a multi-week pause. The repository reorganization, operating documentation, campaign history, analytics, and Verse-specific agent procedures have now been consolidated as the durable project record. The four publishing sessions have been restored and verified, but no new public promotion has begun and no recurring promotional or measurement automation is currently active.
 
 ## Portfolio and Workstreams
 
@@ -48,22 +48,24 @@ None are active. On 2026-07-29 Alex asked to stop, and Codex deleted:
 
 Do not assume monitoring is occurring. Create a new recurring task only after Alex asks to resume ongoing monitoring.
 
-### Account access at the pause
+### Account access
 
-- X was open as Alex's personal `@lagomrad` account rather than `@verse_vids`.
-- Instagram recognized `@verse.videos` but required authentication.
-- TikTok was signed out and intermittently failed to load.
-- YouTube Studio was in the wrong Google or channel context for Verse Ambient.
+On 2026-09-01 the active Chrome sessions were verified as:
 
-When resuming, ask Alex to authenticate directly in Chrome or the relevant app. Do not request credentials in chat or store them in the repo.
+- X: `@verse_vids`;
+- Instagram: `@verse.videos`;
+- TikTok: `@verse_vids`;
+- YouTube Studio: **Verse Ambient**.
+
+Sessions can degrade or switch account context, so verify the exact identity again immediately before publishing. Do not request credentials in chat or store them in the repo.
 
 ## Recommended Next Sequence
 
-1. Restore and verify the exact Verse account sessions.
+1. Inspect and register the new finished video while preserving its master.
 2. Take a fresh manual performance baseline rather than treating July records as current.
-3. Select one visually distinct, unused excerpt from the existing ambient master or begin intake for the next finished master.
-4. Run one approved Instagram-first organic conversion experiment.
-5. Measure saves and profile activity at a defined age.
+3. Prepare the smallest platform-native derivative set and obtain approval for exact public copy.
+4. Publish the approved return signal across the selected channels.
+5. Measure saves, profile activity, qualified viewing, and other platform-appropriate conversion signals at a defined age.
 6. Decide whether the higher-value next investment is another excerpt, the next ambient release, carefully approved outreach, or a bounded paid audience-learning test.
 
 ## Expansion Path

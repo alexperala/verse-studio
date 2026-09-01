@@ -1,0 +1,7 @@
+interface:
+  display_name: "Verse Social Publisher"
+  short_description: "Prepare and publish Verse Studio social clips."
+  default_prompt: "Use $verse-social-publisher to prepare, publish, verify, and log today's Verse Studio clips."
+
+policy:
+  allow_implicit_invocation: true

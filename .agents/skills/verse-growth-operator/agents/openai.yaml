@@ -1,0 +1,4 @@
+interface:
+  display_name: "Verse Growth Operator"
+  short_description: "Run Verse Studio launches, growth, and analytics."
+  default_prompt: "Use $verse-growth-operator to plan, execute, measure, and improve distribution for this Verse Studio release."

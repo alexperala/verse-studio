@@ -1,169 +1,222 @@
-/* --- Theme --- */
+/* Verse Studio: a quiet screening room. The films carry the colour; the site is off-white and ink,
+   with subtle pastel teal and orange. */
 :root {
-  --bg: #fafafc;
-  --fg: #0c1628;
-  --fg-2: #2e3f52;
-  --muted: #5c6e82;
-  --muted-2: #8d99a8;
-  --pink: #f0185c;
-  --teal: #00ccb4;
-  --line: rgba(12, 22, 40, 0.08);
+  /* off-white page, quiet ink, and two subtle pastels (Alex, 2026-10-29): teal and orange */
+  --paper: #fcfbf9;
+  --white: #ffffff;
+  --ink: #1f2124;
+  --ink-2: #4a4d53;
+  --muted: #6e7178;
+  --rule: rgba(31, 33, 36, 0.12);
+
+  --teal-50: #e4f3f0;
+  --teal-200: #b4ddd5;
+  --teal-700: #2f6f68;
+  --orange-50: #fdf0e6;
+  --orange-200: #f5c6a2;
+  --orange-700: #9c4e1f;
+
+  --focus: var(--teal-700);
+
+  --display: "Zen Old Mincho", "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;
+  --text: "Schibsted Grotesk", "Helvetica Neue", Arial, system-ui, sans-serif;
+
+  --wrap: 1180px;
+  --gutter: clamp(20px, 4vw, 40px);
 }
 
 * { box-sizing: border-box; }
-html, body { height: 100%; }
+html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  color: var(--fg);
-  background: var(--bg);
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  line-height: 1.55;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: var(--text);
+  font-size: 1.0625rem;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  font-kerning: normal;
 }
 
-a { color: inherit; text-decoration: none; }
-a:hover { opacity: 0.7; }
+img, video, iframe { display: block; max-width: 100%; }
+
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.22em; text-decoration-color: var(--teal-700); }
+a:hover { text-decoration-thickness: 2px; text-decoration-color: var(--orange-700); }
+
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+
+.wrap {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip {
+  position: absolute;
+  left: 12px;
+  top: -60px;
+  padding: 10px 14px;
+  background: var(--ink);
+  color: var(--paper);
+  z-index: 10;
+}
+.skip:focus { top: 12px; }
 
 /* --- Header --- */
-.site-header {
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 22px 28px;
+.site-header { border-bottom: 1px solid var(--rule); background: var(--white); }
+
+.site-header .wrap {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
-  border-bottom: 1px solid var(--line);
+  gap: 24px;
+  padding-top: 22px;
+  padding-bottom: 22px;
 }
 
-.brand {
-  color: var(--fg);
-  font-size: 0.7rem;
+.wordmark {
+  font-family: var(--display);
   font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  transition: color 180ms;
+  font-size: 1.3rem;
+  letter-spacing: 0.01em;
+  text-decoration: none;
 }
 
-.brand:hover { color: var(--pink); opacity: 1; }
-
-.top-nav {
+.site-nav {
   display: flex;
-  align-items: center;
-  gap: 30px;
+  gap: clamp(16px, 3vw, 32px);
+  font-size: 0.95rem;
 }
 
-.top-nav a {
-  color: var(--muted);
-  font-size: 0.7rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  font-weight: 500;
-  transition: color 180ms;
-}
-
-.top-nav a:hover { color: var(--pink); opacity: 1; }
+.site-nav a { text-decoration: none; color: var(--ink-2); }
+.site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--ink); text-decoration: underline; }
 
 /* --- Footer --- */
 .site-footer {
-  max-width: 1140px;
-  margin: 80px auto 48px;
-  padding: 22px 28px 0;
-  border-top: 1px solid var(--line);
-  display: flex;
-  gap: 20px;
-  color: var(--muted-2);
-  justify-content: space-between;
-  font-size: 0.75rem;
-  letter-spacing: 0.04em;
+  margin-top: clamp(80px, 12vw, 140px);
+  border-top: 1px solid var(--rule);
 }
 
-.site-footer a { color: var(--muted-2); }
-.site-footer a:hover { color: var(--teal); opacity: 1; }
+.site-footer .wrap {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 32px;
+  padding-top: 40px;
+  padding-bottom: 56px;
+  font-size: 0.95rem;
+  color: var(--ink-2);
+}
+
+.site-footer h2 {
+  margin: 0 0 10px;
+  font-family: var(--text);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.site-footer ul { list-style: none; margin: 0; padding: 0; }
+.site-footer li { margin: 0 0 6px; }
+.site-footer .footer-mark { font-family: var(--display); font-size: 1.6rem; color: var(--ink); margin: 0 0 8px; }
+.site-footer .fine { color: var(--muted); font-size: 0.875rem; margin-top: 18px; }
 
 /* --- Buttons --- */
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  padding: 11px 22px;
-  font-size: 0.72rem;
+  gap: 10px;
+  padding: 12px 22px;
+  font-family: var(--text);
+  font-size: 0.975rem;
   font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  border: 1px solid rgba(12, 22, 40, 0.22);
-  color: var(--muted);
+  line-height: 1.2;
+  color: var(--ink);
   background: transparent;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  text-decoration: none;
   cursor: pointer;
-  transition: border-color 160ms, color 160ms;
+  transition: background-color 160ms, color 160ms;
 }
 
-.btn:hover {
-  border-color: var(--teal);
-  color: var(--teal);
-  opacity: 1;
-}
+.btn:hover { background: var(--teal-50); border-color: var(--teal-700); color: var(--teal-700); }
 
-.btn-primary {
-  background: var(--fg);
-  border-color: var(--fg);
-  color: var(--bg);
-}
+.btn-solid { background: var(--ink); color: var(--white); }
+.btn-solid:hover { background: var(--teal-700); border-color: var(--teal-700); color: var(--white); }
 
-.btn-primary:hover {
-  background: var(--pink);
-  border-color: var(--pink);
-  color: #fff;
-}
-
-.icon { display: inline-block; width: 1em; height: 1em; }
-
-/* --- Badge --- */
-.badge {
-  display: inline-block;
-  padding: 3px 9px;
-  border: 1px solid rgba(0, 204, 180, 0.35);
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--teal);
-}
-
-/* --- Blog layout (shared) --- */
-.section {
-  max-width: 1140px;
-  margin: 60px auto 0;
-  padding: 40px 28px 0;
-  border-top: 1px solid var(--line);
-}
-
-.section h2 {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  margin: 0 0 14px;
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+/* --- Shared type --- */
+.display {
+  font-family: var(--display);
   font-weight: 500;
   letter-spacing: -0.01em;
+  line-height: 1.08;
+}
+
+.section-title {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin: 0 0 clamp(24px, 4vw, 40px);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 20px;
+  margin: 0;
+  font-size: 0.925rem;
+}
+.facts dt { color: var(--muted); }
+.facts dd { margin: 0; }
+
+/* --- Blog (shared by the blog index and posts) --- */
+.section {
+  max-width: var(--wrap);
+  margin: clamp(32px, 6vw, 64px) auto 0;
+  padding: 0 var(--gutter);
+}
+
+.section h1, .section h2 {
+  font-family: var(--display);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
 }
 
 .card {
-  border: 1px solid var(--line);
-  padding: 24px;
-  background: rgba(255, 255, 255, 0.45);
+  border-top: 1px solid var(--rule);
+  padding: 28px 0;
 }
 
-.grid {
-  display: grid;
-  gap: 16px;
-  grid-template-columns: repeat(3, 1fr);
+.badge {
+  display: inline-block;
+  font-size: 0.875rem;
+  color: var(--muted);
 }
 
-@media (max-width: 900px) {
-  .grid { grid-template-columns: 1fr; }
+@media (max-width: 760px) {
+  .site-footer .wrap { grid-template-columns: 1fr; gap: 24px; }
 }
 
-@media (max-width: 700px) {
-  .site-header { padding: 18px 20px; }
-  .top-nav { gap: 18px; }
+@media (max-width: 520px) {
+  .site-header .wrap { flex-direction: column; gap: 10px; }
 }
 
-main { position: relative; }
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* when a page ends on a coloured band, the footer sits right under it */
+main:has(> :last-child[class*="-band"]) + .site-footer { margin-top: 0; border-top: 0; }

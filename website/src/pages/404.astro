@@ -1,0 +1,16 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+<BaseLayout title="Page not found | Verse Studio" description="This page isn't on the Verse Studio site.">
+  <section class="section not-found">
+    <h1>This page isn't here.</h1>
+    <p>It may have moved, or the link may be mistyped.</p>
+    <p><a class="btn" href="/">Go to the homepage</a></p>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found { padding-top: clamp(40px, 8vw, 96px); }
+  .not-found h1 { margin: 0 0 14px; font-size: clamp(2.2rem, 5vw, 3.6rem); }
+  .not-found p { margin: 0 0 24px; color: var(--ink-2); }
+</style>

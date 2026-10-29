@@ -1,18 +1,23 @@
 ---
-import { blogPosts } from "../data/blog";
+import "../styles/global.css";
 
 export interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  imageAlt?: string;
 }
 const {
-  title = "Verse Studio — Human vision × AI computation",
-  description = "Verse Studio is a new creative media production studio, AI-first and artist-led. Optics, vision, artistry, and computation—projects launching soon.",
+  title = "Verse Studio",
+  description = "Verse Studio pairs human artistry with generative AI technology to craft filmic visuals, immersive sound, and intelligent media systems.",
+  image = "/og-cut-up-chic.jpg",
+  imageAlt = "The Cut Up Chic title card: cut-out letters on a pink and lime poster",
 } = Astro.props;
 
-import "../styles/global.css";
-
-const hasBlog = blogPosts.length > 0;
+const site = Astro.site ?? new URL("https://verse-studio.com");
+const canonical = new URL(Astro.url.pathname, site).href;
+const imageUrl = new URL(image, site).href;
+const path = Astro.url.pathname;
 ---
 <html lang="en">
   <head>
@@ -20,36 +25,64 @@ const hasBlog = blogPosts.length > 0;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content="index,follow" />
-    <link rel="canonical" href="https://verse-studio.com" />
+    <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:site_name" content="Verse Studio" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://verse-studio.com" />
-    <meta property="og:image" content="/og/verse-og.svg" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:alt" content={imageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="theme-color" content="#f6f3ee" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=Zen+Old+Mincho:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
+    <a class="skip" href="#main">Skip to content</a>
     <header class="site-header">
-      <a class="brand" href="/">Verse Studio</a>
-      <nav class="top-nav">
-        <a href="https://morning-news-update.podbean.com/" rel="noopener noreferrer" target="_blank">Podcast</a>
-        <a href="mailto:info@verse-studio.com">Contact</a>
-      </nav>
+      <div class="wrap">
+        <a class="wordmark" href="/">Verse Studio</a>
+        <nav class="site-nav" aria-label="Main">
+          <a href="/#films">Films</a>
+          <a href="/#podcast">Podcast</a>
+          <a href="/blog" aria-current={path.startsWith("/blog") ? "page" : undefined}>Blog</a>
+          <a href="mailto:info@verse-studio.com">Contact</a>
+        </nav>
+      </div>
     </header>
-    <main>
+    <main id="main">
       <slot />
     </main>
     <footer class="site-footer">
-      <span>© {new Date().getFullYear()} Verse Studio</span>
-      <a href="mailto:info@verse-studio.com">info@verse-studio.com</a>
+      <div class="wrap">
+        <div>
+          <p class="footer-mark">Verse Studio</p>
+          <p>A new creative media studio, AI-first and artist-led.</p>
+          <p class="fine">© {new Date().getFullYear()} Verse Studio</p>
+        </div>
+        <div>
+          <h2>Contact</h2>
+          <ul>
+            <li><a href="mailto:info@verse-studio.com">info@verse-studio.com</a></li>
+            <li><a href="mailto:alex@verse-studio.com">Work with us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Follow</h2>
+          <ul>
+            <li><a href="https://www.youtube.com/channel/UCWYXoE0ZI991aWODnrYDkBg" rel="me noopener" target="_blank">YouTube</a></li>
+            <li><a href="https://www.instagram.com/verse.videos/" rel="me noopener" target="_blank">Instagram</a></li>
+            <li><a href="https://www.tiktok.com/@verse_vids" rel="me noopener" target="_blank">TikTok</a></li>
+            <li><a href="https://x.com/verse_vids" rel="me noopener" target="_blank">X</a></li>
+          </ul>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

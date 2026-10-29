@@ -1,349 +1,282 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import VideoFacade from "../components/VideoFacade.astro";
 import { latestBlogPost } from "../data/blog";
----
-<BaseLayout title="Verse Studio — New creative media studio (AI-first)">
-  <div class="page">
+import cutUpChicPoster from "../assets/films/cut-up-chic.jpg";
+import paperForestPoster from "../assets/films/paper-forest.jpg";
 
-    <!-- Hero -->
-    <section class="hero">
-      <p class="kicker">New creative media studio — AI-first, artist-led</p>
-      <h1 class="hero-title">
-        Human creativity<br>
-        <em>× AI tools</em>
-      </h1>
-      <p class="hero-sub">
+// The premiere plays from our own files until the full video is on YouTube.
+const premiereSources = [
+  { src: "/films/cut-up-chic-1080.av1.mp4", type: 'video/mp4; codecs="av01.0.08M.10"' },
+  { src: "/films/cut-up-chic-720.h264.mp4", type: "video/mp4" },
+];
+
+const shorts = [
+  { title: "Funny Couple", youtube: "MudXCFMwbMQ", note: latestBlogPost ? { href: latestBlogPost.href, label: "How it was made" } : null },
+  { title: "Tunnel Attack", youtube: "owTpoxUR_lQ", note: null },
+  { title: "Hello World!", youtube: "1U0iUzdj2bA", note: null },
+  { title: "AI Jeans Ad", youtube: "J1kbzwG4QRU", note: null },
+];
+---
+<BaseLayout
+  title="Verse Studio: Cut Up Chic, a collage music video"
+  description="Verse Studio pairs human artistry with generative AI technology to craft filmic visuals, immersive sound, and intelligent media systems. Now premiering: Cut Up Chic, a collage music video."
+>
+  <h1 class="visually-hidden">Verse Studio</h1>
+  <section class="premiere" aria-labelledby="premiere-title">
+    <div class="wrap">
+      <div class="premiere-screen">
+        <VideoFacade title="Cut Up Chic" poster={cutUpChicPoster} sources={premiereSources} priority sizes="(max-width: 1240px) 100vw, 1180px" />
+      </div>
+      <div class="premiere-text">
+        <div>
+          <p class="premiere-status">Premiere</p>
+          <h2 id="premiere-title" class="premiere-title">Cut Up Chic</h2>
+          <p class="premiere-deck">A collage music video.</p>
+        </div>
+        <dl class="facts premiere-facts">
+          <dt>Song</dt><dd>Made with ElevenLabs</dd>
+          <dt>Dancers</dt><dd>Veo 3.1 Lite, from start images made with OpenAI</dd>
+          <dt>Footage</dt><dd>Public-domain newsreels, silent films and free stock</dd>
+          <dt>Edit</dt><dd>Cut in code with Claude</dd>
+          <dt>Creative director</dt><dd>Alex Perala</dd>
+          <dt>Runtime</dt><dd>2:02</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro wrap" aria-labelledby="intro-title">
+    <h2 id="intro-title" class="intro-title">Human creativity ×&nbsp;AI tools</h2>
+    <div class="intro-body">
+      <p class="intro-text">
         Verse Studio pairs human artistry with generative AI technology to craft filmic visuals,
         immersive sound, and intelligent media systems.
       </p>
-      <div class="ctas">
-        <a
-          class="btn btn-primary"
-          href="https://morning-news-update.podbean.com/"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-          Morning News Update
-        </a>
-        <a class="btn" href="mailto:alex@verse-studio.com">Work with us</a>
-      </div>
-    </section>
+      <p><a class="btn" href="mailto:alex@verse-studio.com">Work with us</a></p>
+    </div>
+  </section>
 
-    <!-- Flagship video -->
-    <section class="content-section">
-      <div class="section-label">Flagship</div>
-      <div class="video-wrap feature-wrap">
-        <iframe
-          src="https://www.youtube-nocookie.com/embed/wnSPzx93-UU?rel=0"
-          title="Verse Ambient — A Quiet Year in the Japanese Countryside"
-          loading="lazy"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-          referrerpolicy="strict-origin-when-cross-origin"
-        ></iframe>
-      </div>
-      <p class="video-caption">
-        A quiet journey through the Japanese countryside across four seasons, pairing anime-inspired landscapes with original ambient and experimental music.
-        <a
-          href="https://www.youtube.com/watch?v=wnSPzx93-UU"
-          class="caption-link"
-          target="_blank"
-          rel="noopener noreferrer"
-        >Watch on Verse Ambient →</a>
-      </p>
-    </section>
+  <section id="films" class="films wrap" aria-labelledby="films-title">
+    <h2 id="films-title" class="section-title">Films</h2>
 
-    <!-- Recent work -->
-    <section class="content-section">
-      <div class="section-label">Recent Work</div>
-      <div class="video-grid">
-        <article class="work-card">
-          <div class="video-wrap">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/MudXCFMwbMQ?rel=0"
-              title="Verse Studio — Funny Couple"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              referrerpolicy="strict-origin-when-cross-origin"
-            ></iframe>
-          </div>
-          <div class="work-meta">
-            <span>Funny Couple</span>
-            {latestBlogPost && (
-              <a href={latestBlogPost.href}>How It Was Made →</a>
-            )}
-          </div>
-        </article>
-        <article class="work-card">
-          <div class="video-wrap">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/owTpoxUR_lQ?rel=0"
-              title="Verse Studio — Tunnel Attack"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              referrerpolicy="strict-origin-when-cross-origin"
-            ></iframe>
-          </div>
-          <div class="work-meta"><span>Tunnel Attack</span></div>
-        </article>
-        <article class="work-card">
-          <div class="video-wrap">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/1U0iUzdj2bA?rel=0"
-              title="Verse Studio — Hello World!"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              referrerpolicy="strict-origin-when-cross-origin"
-            ></iframe>
-          </div>
-          <div class="work-meta"><span>Hello World!</span></div>
-        </article>
-        <article class="work-card">
-          <div class="video-wrap">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/J1kbzwG4QRU?rel=0"
-              title="Verse Studio — AI Jeans Ad"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              referrerpolicy="strict-origin-when-cross-origin"
-            ></iframe>
-          </div>
-          <div class="work-meta"><span>AI Jeans Ad</span></div>
-        </article>
+    <article class="film">
+      <VideoFacade title="Paper Forest" youtube="CzBC2-4GTCE" poster={paperForestPoster} />
+      <div class="film-text">
+        <h3 class="film-title">Paper Forest</h3>
+        <p>
+          A day in a tropical mountain forest made entirely of paper, from first light to dusk, through rolling mist and a
+          passing rain. Only the water is “real.”
+        </p>
+        <dl class="facts">
+          <dt>Format</dt><dd>Ambient film with original music</dd>
+          <dt>Runtime</dt><dd>29 minutes</dd>
+          <dt>Released</dt><dd>October 2026</dd>
+          <dt>Channel</dt><dd>Verse Ambient</dd>
+        </dl>
+        <p><a href="https://youtu.be/CzBC2-4GTCE" target="_blank" rel="noopener">Watch on YouTube</a></p>
       </div>
-    </section>
+    </article>
 
-    <!-- Podcast -->
-    <section class="content-section">
-      <div class="section-label">Podcast</div>
-      <div class="podcast-block">
-        <h2>Morning News Update</h2>
+    <article class="film">
+      <VideoFacade title="A Quiet Year in the Japanese Countryside" youtube="wnSPzx93-UU" />
+      <div class="film-text">
+        <h3 class="film-title">A Quiet Year in the Japanese Countryside</h3>
+        <p>
+          A quiet journey through the Japanese countryside across four seasons, pairing anime-inspired landscapes with
+          original ambient and experimental music.
+        </p>
+        <dl class="facts">
+          <dt>Format</dt><dd>Ambient film with original music</dd>
+          <dt>Channel</dt><dd>Verse Ambient</dd>
+        </dl>
+        <p><a href="https://www.youtube.com/watch?v=wnSPzx93-UU" target="_blank" rel="noopener">Watch on YouTube</a></p>
+      </div>
+    </article>
+
+    <h3 class="shorts-title">Shorts</h3>
+    <ul class="shorts">
+      {shorts.map((s) => (
+        <li>
+          <VideoFacade title={s.title} youtube={s.youtube} sizes="(max-width: 760px) 100vw, 25vw" />
+          <p class="short-title">{s.title}</p>
+          {s.note && <p class="short-note"><a href={s.note.href}>{s.note.label}</a></p>}
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section id="podcast" class="podcast-band" aria-labelledby="podcast-title">
+    <div class="podcast wrap">
+    <h2 class="section-title">Podcast</h2>
+    <div class="podcast-row">
+      <h3 id="podcast-title" class="film-title">Morning News Update</h3>
+      <div>
         <p>
           A fast, daily news podcast powered by advanced speech synthesis and automated editorial pipelines.
-          Built to sound human — because the vision behind it is.
+          Built to sound human, because the vision behind it is.
         </p>
-        <a
-          class="btn btn-primary"
-          href="https://morning-news-update.podbean.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Visit Podcast
-        </a>
+        <p><a class="btn" href="https://morning-news-update.podbean.com/" target="_blank" rel="noopener">Listen on Podbean</a></p>
       </div>
-    </section>
-
-  </div>
+    </div>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
-  .page {
-    max-width: 1140px;
-    margin: 0 auto;
-    padding: 52px 28px 128px;
+  /* The premiere: the poster is the one burst of colour, matted on a pale teal wall */
+  .premiere {
+    background: var(--teal-50);
+    padding: clamp(28px, 5vw, 56px) 0 clamp(44px, 7vw, 80px);
   }
 
-  /* ── Hero ── */
-  .hero {
-    padding: 5px 0 88px;
-    max-width: 900px;
+  .premiere-screen {
+    padding: clamp(6px, 0.9vw, 12px);
+    background: var(--white);
+    box-shadow: 0 24px 50px -28px rgba(31, 60, 56, 0.45);
   }
 
-  .kicker {
-    display: inline-block;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--teal);
-    background: var(--fg);
-    padding: 5px 12px;
-    border-radius: 2px;
-    margin-bottom: 28px;
-    animation: appear 0.6s ease both;
-  }
-
-  .hero-title {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(4rem, 9vw, 9rem);
-    font-weight: 500;
-    line-height: 0.9;
-    letter-spacing: -0.015em;
-    margin: 0 0 36px;
-    color: var(--fg);
-    animation: appear 0.7s 0.07s ease both;
-  }
-
-  .hero-title em {
-    font-style: italic;
-    font-weight: 400;
-    color: var(--teal);
-  }
-
-  .hero-sub {
-    font-size: 1rem;
-    color: var(--muted);
-    max-width: 50ch;
-    line-height: 1.75;
-    margin-bottom: 40px;
-    animation: appear 0.7s 0.16s ease both;
-  }
-
-  .ctas {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    animation: appear 0.7s 0.24s ease both;
-  }
-
-  /* ── Section label ── */
-  .content-section {
-    margin-bottom: 84px;
-  }
-
-  .section-label {
-    font-size: 0.66rem;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    color: var(--pink);
-    padding-bottom: 13px;
-    border-bottom: 1px solid var(--line);
-    margin-bottom: 28px;
-  }
-
-  /* ── Videos ── */
-  .video-wrap {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #dde2ea;
-    overflow: hidden;
-  }
-
-  .video-wrap iframe {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-  }
-
-  .feature-wrap {
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow:
-      0 1px 3px rgba(0, 0, 0, 0.06),
-      0 6px 24px rgba(0, 0, 0, 0.06),
-      0 20px 60px rgba(0, 0, 0, 0.05);
-  }
-
-  .video-caption {
-    margin-top: 16px;
-    font-size: 0.88rem;
-    color: var(--muted);
-    max-width: 72ch;
-    line-height: 1.65;
-  }
-
-  .caption-link {
-    color: var(--teal);
-    margin-left: 10px;
-    font-weight: 500;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    text-decoration-color: rgba(0, 204, 180, 0.4);
-    transition: text-decoration-color 180ms;
-  }
-
-  .caption-link:hover {
-    opacity: 1;
-    text-decoration-color: var(--teal);
-  }
-
-  .video-grid {
+  .premiere-text {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 30px 18px;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: clamp(24px, 5vw, 64px);
+    align-items: end;
+    margin-top: clamp(28px, 4vw, 44px);
   }
 
-  .video-grid .video-wrap {
-    border: 1px solid rgba(0, 0, 0, 0.07);
-  }
-
-  .work-card {
-    min-width: 0;
-  }
-
-  .work-meta {
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
-    align-items: baseline;
-    margin-top: 11px;
-    font-size: 0.78rem;
-    line-height: 1.5;
-  }
-
-  .work-meta span {
-    color: var(--fg);
-    font-weight: 500;
-  }
-
-  .work-meta a {
-    color: var(--teal);
-    text-decoration: underline;
-    text-decoration-color: rgba(0, 204, 180, 0.4);
-    text-underline-offset: 3px;
-    white-space: nowrap;
-  }
-
-  .work-meta a:hover {
-    text-decoration-color: var(--teal);
-  }
-
-  /* ── Podcast ── */
-  .podcast-block h2 {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(1.8rem, 3.5vw, 3rem);
-    font-weight: 500;
-    letter-spacing: -0.01em;
+  .premiere-status {
+    display: inline-block;
     margin: 0 0 14px;
+    padding: 3px 12px;
+    font-size: 0.925rem;
+    font-weight: 500;
+    color: var(--orange-700);
+    background: var(--orange-50);
+    border: 1px solid var(--orange-200);
+    border-radius: 999px;
   }
 
-  .podcast-block p {
-    color: var(--muted);
-    max-width: 56ch;
-    line-height: 1.75;
-    font-size: 0.95rem;
+  .premiere-title {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(3.4rem, 9vw, 7.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+
+  .premiere-deck {
+    margin: 14px 0 0;
+    font-family: var(--display);
+    font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  }
+
+  .premiere-facts { font-size: 1rem; }
+  .premiere-facts dt { color: var(--teal-700); font-weight: 500; }
+
+  /* Studio statement */
+  .intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(24px, 5vw, 64px);
+    align-items: start;
+    padding-top: clamp(64px, 10vw, 120px);
+    padding-bottom: clamp(56px, 9vw, 104px);
+  }
+
+  .intro-title {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(2.4rem, 5.4vw, 4.4rem);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+  }
+
+  .intro-text {
     margin: 0 0 28px;
+    font-size: clamp(1.15rem, 1.7vw, 1.35rem);
+    line-height: 1.55;
+    color: var(--ink-2);
+    max-width: 36ch;
   }
 
-  /* ── Animation ── */
-  @keyframes appear {
-    from {
-      opacity: 0;
-      transform: translateY(8px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  /* Films: a printed programme */
+  .films::before {
+    content: "";
+    display: block;
+    border-top: 1px solid var(--rule);
+    margin-bottom: clamp(40px, 6vw, 64px);
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .kicker, .hero-title, .hero-sub, .ctas {
-      animation: none;
-    }
+  .film {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+    gap: clamp(22px, 4vw, 48px);
+    align-items: start;
+    padding-bottom: clamp(40px, 6vw, 64px);
+    margin-bottom: clamp(40px, 6vw, 64px);
+    border-bottom: 1px solid var(--rule);
   }
 
-  @media (max-width: 700px) {
-    .hero { padding: 52px 0 68px; }
-    .video-grid { grid-template-columns: 1fr; gap: 24px; }
-    .page { padding: 32px 20px 80px; }
+  .film-title {
+    margin: 0 0 14px;
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+  }
+
+  .film-text p { margin: 0 0 20px; max-width: 46ch; color: var(--ink-2); }
+  .film-text .facts { margin: 4px 0 22px; }
+  .film-text a { font-weight: 500; color: var(--ink); }
+
+  .shorts-title {
+    margin: 0 0 22px;
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.5rem;
+  }
+
+  .shorts {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 28px 18px;
+  }
+
+  .short-title { margin: 12px 0 0; font-weight: 500; }
+  .short-note { margin: 2px 0 0; font-size: 0.925rem; }
+
+  /* Podcast */
+  .podcast-band {
+    background: var(--orange-50);
+    margin-top: clamp(64px, 9vw, 104px);
+    padding: clamp(48px, 7vw, 80px) 0 clamp(56px, 8vw, 88px);
+  }
+
+  .podcast-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(22px, 4vw, 48px);
+  }
+
+  .podcast-row p { margin: 0 0 22px; max-width: 46ch; color: var(--ink-2); }
+
+  @media (max-width: 900px) {
+    .shorts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .premiere-text { grid-template-columns: 1fr; align-items: start; }
+  }
+
+  @media (max-width: 760px) {
+    .premiere-text, .intro, .film, .podcast-row { grid-template-columns: 1fr; }
+    .premiere-text { align-items: start; }
+  }
+
+  @media (max-width: 460px) {
+    .shorts { grid-template-columns: 1fr; }
   }
 </style>

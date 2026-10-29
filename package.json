@@ -5,7 +5,7 @@
   "scripts": {
     "install:website": "npm --prefix website install",
     "dev": "npm --prefix website run dev",
-    "build": "npm --prefix website run build",
+    "build": "(test -d node_modules/astro || test -d website/node_modules/astro || npm --prefix website ci) && npm --prefix website run build && rm -rf dist && cp -R website/dist dist",
     "preview": "npm --prefix website run preview",
     "astro": "npm --prefix website run astro"
   }

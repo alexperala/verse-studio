@@ -11,7 +11,7 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     slug: "funny-couple-how-it-was-made",
-    href: "/blog-funny-couple-how-it-was-made",
+    href: "/blog-funny-couple-how-it-was-made/",
     title: "Verse Vids Ep. 3 – Funny Couple: Behind the Scenes",
     summary:
       "A breakdown of the workflow, tools, and creative constraints behind Verse Studio's AI-assisted Funny Couple video.",

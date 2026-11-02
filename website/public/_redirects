@@ -1,0 +1,5 @@
+# The blog was removed on 2026-11-02 (Alex). Old links land on the films.
+/blog /#films 301
+/blog/ /#films 301
+/blog-funny-couple-how-it-was-made /#films 301
+/blog-funny-couple-how-it-was-made/ /#films 301

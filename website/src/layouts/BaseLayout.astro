@@ -17,7 +17,6 @@ const {
 const site = Astro.site ?? new URL("https://verse-studio.com");
 const canonical = new URL(Astro.url.pathname, site).href;
 const imageUrl = new URL(image, site).href;
-const path = Astro.url.pathname;
 ---
 <html lang="en">
   <head>
@@ -51,7 +50,6 @@ const path = Astro.url.pathname;
         <nav class="site-nav" aria-label="Main">
           <a href="/#films">Films</a>
           <a href="/#podcast">Podcast</a>
-          <a href="/blog/" aria-current={path.startsWith("/blog") ? "page" : undefined}>Blog</a>
           <a href="mailto:info@verse-studio.com">Contact</a>
         </nav>
       </div>

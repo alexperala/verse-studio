@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import VideoFacade from "../components/VideoFacade.astro";
-import { latestBlogPost } from "../data/blog";
 import cutUpChicPoster from "../assets/films/cut-up-chic.jpg";
 import paperForestPoster from "../assets/films/paper-forest.jpg";
 
@@ -12,10 +11,10 @@ const premiereSources = [
 ];
 
 const shorts = [
-  { title: "Funny Couple", youtube: "MudXCFMwbMQ", note: latestBlogPost ? { href: latestBlogPost.href, label: "How it was made" } : null },
-  { title: "Tunnel Attack", youtube: "owTpoxUR_lQ", note: null },
-  { title: "Hello World!", youtube: "1U0iUzdj2bA", note: null },
-  { title: "AI Jeans Ad", youtube: "J1kbzwG4QRU", note: null },
+  { title: "Funny Couple", youtube: "MudXCFMwbMQ" },
+  { title: "Tunnel Attack", youtube: "owTpoxUR_lQ" },
+  { title: "Hello World!", youtube: "1U0iUzdj2bA" },
+  { title: "AI Jeans Ad", youtube: "J1kbzwG4QRU" },
 ];
 ---
 <BaseLayout
@@ -100,7 +99,6 @@ const shorts = [
         <li>
           <VideoFacade title={s.title} youtube={s.youtube} sizes="(max-width: 760px) 100vw, 25vw" />
           <p class="short-title">{s.title}</p>
-          {s.note && <p class="short-note"><a href={s.note.href}>{s.note.label}</a></p>}
         </li>
       ))}
     </ul>
@@ -249,7 +247,6 @@ const shorts = [
   }
 
   .short-title { margin: 12px 0 0; font-weight: 500; }
-  .short-note { margin: 2px 0 0; font-size: 0.925rem; }
 
   /* Podcast */
   .podcast-band {
